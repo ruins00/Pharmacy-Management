@@ -1,0 +1,5 @@
+*.pkl
+med-hash.txt
+bill-hash.txt
+.env/
+__pycache__/
