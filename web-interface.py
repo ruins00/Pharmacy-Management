@@ -21,11 +21,18 @@ def get_bill_details():
 
 @app.route('/meds')
 def meds():
-    return render_template('index.html', title='Meds', med_status='active', headings=med_headings, data=get_med_details())
+    try:
+        return render_template('index.html', title='Meds', med_status='active', headings=med_headings, data=get_med_details())
+    except FileNotFoundError as e:
+        print(e)
+        return render_template('file_error.html')
 
 @app.route('/bills')
 def bills():
-    return render_template('index.html', title='Bills', bill_status='active', headings=bill_headings, data=get_bill_details())
+    try:
+        return render_template('index.html', title='Bills', bill_status='active', headings=bill_headings, data=get_bill_details())
+    except FileNotFoundError as e:
+        return render_template('file_error.html')
 
 @app.route('/css', methods=['GET'])
 def bootstrap_css():
@@ -36,5 +43,5 @@ def bootstrap_css():
 def error_route(err):
     return redirect('/meds')
 
-app.run('0.0.0.0', 3000)
+app.run('0.0.0.0', 3000, debug=True)
 
