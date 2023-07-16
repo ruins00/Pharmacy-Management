@@ -1,4 +1,5 @@
 from MedicineHash import MedicineHash
+import re
 
 class Bill:
     def __init__(self, med_table: MedicineHash) -> None:
@@ -14,6 +15,9 @@ Meds (Name, Count, Price): {self.__meds_list}
 Total Amount: {self.__total_amount}
 Payment Mode: {self.__pay_mode}
 '''
+    def validate_phone_number(self):
+        pattern = r'^\d{10}$'
+        return re.match(pattern, self.__phone) is not None
     
     def get_string(self):
         meds_list = str(self.__meds_list)[1:-1]
@@ -26,6 +30,8 @@ Payment Mode: {self.__pay_mode}
             med_table.add_meds_to_table(self.__meds_list)
         else:
             self.__phone = input("Enter user's phone number: ")
+            while not self.validate_phone_number():
+                self.__phone: str = input("Invalid input!\nEnter a valid phone number:") 
             self.__name = input("Enter user's name: ")
             hex_ph = hex(abs(hash(self.__phone)))
             self.__bill_id = hex_ph[:5] if len(hex_ph) > 5 else hex_ph

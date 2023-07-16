@@ -163,7 +163,7 @@ clearscreen()
 
 TABLE_SIZE = 100
 
-print('-----PHARMACY MANAGEMENT SYSTEM 💊-----\n\n')
+print('--------------PHARMACY MANAGEMENT SYSTEM 💊--------------\n\n')
 print('1. Read data from files 📁')
 print('2. Create new tables 📑\n')
 choice = int(input('Enter your choice: '))
@@ -193,7 +193,7 @@ delay(4, 0.25, '⬜')
 
 while True:
 	clearscreen()
-	print('-----PHARMACY MANAGEMENT SYSTEM 💊-----\n\n')
+	print('--------------PHARMACY MANAGEMENT SYSTEM 💊--------------\n\n')
 	print('1. Login as Admin 🔐')
 	print('2. New Order 🆕')
 	print('3. Search Order 🔍')
